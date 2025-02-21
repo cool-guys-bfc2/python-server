@@ -11,4 +11,4 @@ def run(request):
 def get():
   return " ".join(socket)
 
-app.run()
+app.run(host="0.0.0.0",port=int(os.environ.get("PORT")))
