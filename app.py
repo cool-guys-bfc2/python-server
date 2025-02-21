@@ -7,7 +7,7 @@ def run(request):
   socket.append(socket)
   return "Done!"
 
-@app.route("/get/"):
+@app.route("/get/")
 def get():
   return " ".join(socket)
 
