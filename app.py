@@ -5,7 +5,7 @@ app=Flask(__name__)
 
 @app.route("/socket/<request>")
 def run(request):
-  socket.append(socket)
+  socket.append(request)
   return "Done!"
 
 @app.route("/get/")
