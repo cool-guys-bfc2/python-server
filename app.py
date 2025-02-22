@@ -20,7 +20,7 @@ def write(fn):
   fh.close()
   return "Done!"
 
-@app.route("db/read/<fn>")
+@app.route("/db/read/<fn>")
 def read(fn):
   try:
     return open(fn,"r").read(),200
