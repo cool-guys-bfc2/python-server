@@ -20,6 +20,10 @@ def write(fn):
   fh.close()
   return "Done!"
 
-@app.route("db/read
-
+@app.route("db/read/<fn>")
+def read(fn):
+  try:
+    return open(fn,"r").read(),200
+  except:
+    return "404",404
 app.run(host="0.0.0.0",port=int(os.environ.get("PORT")))
