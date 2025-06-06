@@ -1,0 +1,11 @@
+services:
+  - type: static
+    name: my-app
+    env: python
+    plan: free 
+    buildCommand: pip install -r requirements.txt # or pip install -r requirements.txt
+    startCommand: gunicorn app:app # or gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 10000
+    autoDeploy: true
