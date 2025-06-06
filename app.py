@@ -1,5 +1,6 @@
 import os
 from flask import Flask,request
+ps=os.environ['PASSWORD']
 socket=[]
 app=Flask(__name__)
 
@@ -12,20 +13,27 @@ def run(req):
 def get():
   return " ".join(socket)
 
-@app.route("/db/write/<fn>")
-def write(fn):
-  fc=request.args.get("content")
-  fh=open(fn,"w")
-  fh.write(fc)
-  fh.close()
-  return "Done!"
+@app.route("/db/write/<p>/<fn>")
+def write(p,fn):
+  if p==ps:
+    fc=request.args.get("content")
+    fh=open(fn,"w")
+    fh.write(fc)
+    fh.close()
+    return "Done!"
+  else:
+    return 'Incorrect password',404
 
-@app.route("/db/read/<fn>")
-def read(fn):
-  try:
-    return open(fn,"r").read(),200
-  except:
-    return "404",404
+@app.route("/db/read/<p>/<fn>")
+def read(p,fn):
+  if p==ps:
+    try:
+      return open(fn,"r").read(),200
+    except:
+      return "404",404
+  else:
+    return 'Incorrect password',404
+    
 @app.route("/page/<fn>")
 def host(fn):
   try:
