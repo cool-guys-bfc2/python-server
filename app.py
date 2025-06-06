@@ -26,4 +26,11 @@ def read(fn):
     return open(fn,"r").read(),200
   except:
     return "404",404
+@app.route("/page/<fn>")
+def host(fn):
+  try:
+    return open("src/"+fn,"r").read(),200
+  except:
+    return "404",404
+
 app.run(host="0.0.0.0",port=int(os.environ.get("PORT")))
