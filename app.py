@@ -37,7 +37,7 @@ def read(p,fn):
 @app.route("/page/<fn>")
 def host(fn):
   try:
-    return open("src/"+fn,"r").read(),200
+    return open("src-"+fn,"r").read(),200
   except:
     return "404",404
 
