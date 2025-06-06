@@ -1,5 +1,5 @@
 services:
-  - type: static
+  - type: web
     name: my-app
     env: python
     plan: free 
